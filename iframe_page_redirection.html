@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Tizen - iframe element sandbox attribute sample</title>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+</head>
+<body>
+    <img id="img" alt="Tizen Lockup on Dark" src="http://www.tizen.org/sites/default/files/admins/tizen-branding-lockup-on-dark.png"
+        onclick="alert('fake advertisement!');" width="240" height="103" />
+    <script>
+        setInterval(function () {
+            var img = document.getElementById("img");
+
+            if (img.src == "https://www.tizen.org/sites/default/files/admins/tizen-branding-lockup-on-light.png") {
+                img.src = "https://www.tizen.org/sites/default/files/admins/tizen-branding-lockup-on-dark.png";
+            }
+            else {
+                img.src = "https://www.tizen.org/sites/default/files/admins/tizen-branding-lockup-on-light.png";
+            }
+        }, 300);
+
+        try {
+            location = "warning.html";
+        }
+        catch (e) {
+            alert("HTML5 Sandbox prevented top level navigation.");
+        }
+    </script>
+</body>
+</html>

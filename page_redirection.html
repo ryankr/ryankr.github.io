@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Tizen - iframe element sandbox attribute sample</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+    <script>
+        function setSandbox() {
+            var checkbox = document.querySelector('#chkSandbox');
+            var frame = document.querySelector('#iframe');
+            var frameInfo = "", flag = "";
+
+            if (checkbox.checked) {
+                flag = 'allow-scripts allow-top-navigation';
+                frameInfo = '<iframe src sandbox="allow-scripts allow-top-navigation"></iframe>';
+            } else {
+                flag = 'allow-scripts';
+                frameInfo = '<iframe src sandbox="allow-scripts"></iframe>';
+            }
+
+            frame.setAttribute('sandbox', flag);
+            frame.setAttribute('src', 'iframe_page_redirection.html');
+            document.querySelector('#description').textContent = frameInfo;
+        }
+
+        window.addEventListener('load', function (e) {
+            var frameInfo = document.querySelector('#description');
+            frameInfo.textContent = '<iframe src sandbox="allow-scripts"></iframe>';
+        });
+
+    </script>
+</head>
+<body>
+    <input type="checkbox" id="chkSandbox" name="chkSandbox" onclick="setSandbox()" />
+    Disable Sandbox
+    <div id="description" style="padding: 10px; margin: 10px;">
+    </div>
+    <div style="border: 1px solid #DCDCDC; padding: 5px;">
+        <h1>
+            About the Linux Foundation</h1>
+        <p>
+            Since its inception in 1991, Linux has grown to become a force in computing, powering
+            everything from the New York Stock Exchange to mobile phones to supercomputers to
+            consumer devices.
+        </p>
+        <article>
+        <iframe src="iframe_page_redirection.html" 
+                    sandbox="allow-scripts" 
+                    id="iframe" seamless></iframe>
+        </article>
+        <article>
+            <p>The Linux Foundation is the nonprofit consortium dedicated to fostering the growth of Linux. Founded in 2007, the Linux Foundation sponsors the work of Linux creator Linus Torvalds and is supported by leading technology companies and developers from around the world. The Linux Foundation promotes, protects and advances Linux by marshaling the resources of its members and the open source development community to ensure Linux remains free and technically advanced.</p>
+        </article>
+        <article>
+            <footer>
+                <p>© 2012 Tizen Project, a <a href="http://www.linuxfoundation.org/" class="ext">Linux Foundation</a><span class="ext"></span> Project. All Rights Reserved. Linux is a registered trademark of Linus Torvalds.</p>
+            </footer>
+        </article>
+    </div>
+</body>
+</html>

@@ -27,6 +27,7 @@
             var container = document.getElementById('logContainer');
             container.innerHTML += '<span>' + message + '</span>'
         };
+        var ua = util.userAgent();
         var btnEl = document.getElementById('web2appTestBtn'),
             scheme = 'kakaolink',
             pkgName = 'com.kakao.talk',

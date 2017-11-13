@@ -19,11 +19,9 @@
     </div>
 </div>
 
-<script type="text/javascript" src="../bower_components/ua_parser/src/js/userAgent.js"></script>
-<script type="text/javascript" src="../lib/web2app.js"></script>
+<script type="text/javascript" src="web2app.js"></script>
 <script>
     (function () {
-        var ua = util.userAgent();
         window.log = function (message) {
             var container = document.getElementById('logContainer');
             container.innerHTML += '<span>' + message + '</span>'
@@ -35,9 +33,6 @@
             intentURI = 'intent://kakaopay/pg?url=https://sandbox-pg-reseller-web.kakao.com/v1/e0531879f25d60b84fa7386752be10a9904511c002c73f271b5828e18b2369c4/order/#Intent;scheme=kakaotalk;package=com.kakao.talk;S.browser_fallback_url=https%3A%2F%2Fnaver.com;end",
             appStoreURL = ua.os.android ? 'market://details?id=' + pkgName : 'itms-apps://itunes.apple.com/app/id362057947';
         btnEl.addEventListener('click', function () {
-            if (ua.platform === 'pc') {
-                alert('모바일 기기에서 이용 가능한 기능입니다.\r\n카카오톡이 설치된 스마트폰에서 이용해 주세요.');
-            } else {
                 daumtools.web2app({
                     urlScheme : urlScheme,
                     intentURI : intentURI,
@@ -50,7 +45,6 @@
                         console.log('send click log'); //example
                     }
                 });
-            }
         });
     })();
 </script>
